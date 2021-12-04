@@ -1,6 +1,8 @@
 #include "CGLSL/Parser.hpp"
+#include <IO/IO.hpp>
+#include <fstream>
 
 cglsl::ShaderSource cglsl::Parser::parse(std::string_view shaderPath)
 {
-	// TODO
+	std::string shaderSource = io::readEntireFile(shaderPath);
 }

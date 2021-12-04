@@ -1,9 +1,9 @@
 #pragma once
 
-#include <istream>
+#include <string_view>
 #include <string>
 
 namespace io
 {
-std::string readEntireStream(std::istream stream);
+std::string readEntireFile(std::string_view path);
 }
