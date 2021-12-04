@@ -7,12 +7,21 @@ project(
     HOMEPAGE_URL "https://github.com/Phytolizer/Phyto2DEngine"
 )
 
+include(FetchContent)
+FetchContent_Declare(
+    "glfw"
+    GIT_REPOSITORY "https://github.com/glfw/glfw"
+    GIT_TAG "3.3.5"
+)
+FetchContent_MakeAvailable("glfw")
+
 add_subdirectory("3rd/glad")
 add_subdirectory("3rd/stb")
 
-add_library("Engine" "src/Engine/Shader.cpp")
-target_link_libraries("Engine" PUBLIC "glad" "stb")
+add_library("Engine" "src/Engine/Shader.cpp" inc/Engine/Shader.hpp)
+target_link_libraries("Engine" PUBLIC "glad" "glfw" "stb")
 target_include_directories("Engine" PUBLIC "inc")
+target_compile_features("Engine" PUBLIC "cxx_std_20")
 
 add_executable("TestGame" "src/TestGame/main.cpp")
 target_link_libraries("TestGame" PRIVATE "Engine")
