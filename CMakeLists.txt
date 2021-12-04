@@ -10,7 +10,10 @@ project(
 add_subdirectory("3rd/glad")
 add_subdirectory("3rd/stb")
 
-add_executable("Phyto2DEngine" "main.cpp")
-target_link_libraries("Phyto2DEngine" PRIVATE "glad" "stb")
-target_include_directories("Phyto2DEngine" PRIVATE "inc")
-target_compile_features("Phyto2DEngine" PRIVATE "cxx_std_20")
+add_library("Engine" "src/Engine/Shader.cpp")
+target_link_libraries("Engine" PUBLIC "glad" "stb")
+target_include_directories("Engine" PUBLIC "inc")
+
+add_executable("TestGame" "src/TestGame/main.cpp")
+target_link_libraries("TestGame" PRIVATE "Engine")
+target_compile_features("TestGame" PRIVATE "cxx_std_20")

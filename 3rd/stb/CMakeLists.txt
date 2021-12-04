@@ -7,10 +7,5 @@ project(
     HOMEPAGE_URL "https://github.com/nothings/stb"
 )
 
-add_library(
-    "stb"
-    "stb_vorbis.c"
-    "stb_image.c"
-)
+add_library("stb" "stb_image.c" "stb_vorbis.c")
 target_include_directories("stb" PUBLIC "${PROJECT_SOURCE_DIR}")
-
