@@ -10,4 +10,6 @@ project(
 add_subdirectory("3rd/glad")
 
 add_executable("Phyto2DEngine" "main.cpp")
+target_link_libraries("Phyto2DEngine" PRIVATE "glad")
+target_include_directories("Phyto2DEngine" PRIVATE "inc")
 target_compile_features("Phyto2DEngine" PRIVATE "cxx_std_20")
