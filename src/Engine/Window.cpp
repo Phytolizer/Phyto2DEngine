@@ -22,4 +22,14 @@ phyto::engine::Window::Window(const std::string& title, int width, int height)
 	{
 		throw std::runtime_error{"OpenGL loading failed!"};
 	}
+	glViewport(0, 0, width, height);
+	glfwShowWindow(m_handle);
+}
+bool phyto::engine::Window::shouldClose()
+{
+	return glfwWindowShouldClose(m_handle);
+}
+void phyto::engine::Window::swapBuffers()
+{
+	glfwSwapBuffers(m_handle);
 }

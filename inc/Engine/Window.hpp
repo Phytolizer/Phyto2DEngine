@@ -11,5 +11,7 @@ class Window
 
   public:
 	Window(const std::string& title, int width, int height);
+	bool shouldClose();
+	void swapBuffers();
 };
 } // namespace phyto::engine

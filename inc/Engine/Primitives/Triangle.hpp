@@ -21,5 +21,6 @@ class Triangle
 	explicit Triangle(std::array<float, 9> vertices);
 	void setAttribute(int attr, size_t size, GLenum type, GLenum normalized, size_t stride, size_t offset);
 	void bind() const;
+	void draw();
 };
 } // namespace phyto::engine::primitives

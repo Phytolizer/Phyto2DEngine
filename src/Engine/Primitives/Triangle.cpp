@@ -35,3 +35,8 @@ void phyto::engine::primitives::Triangle::bind() const
 {
 	glEnableVertexAttribArray(m_attr);
 }
+
+void phyto::engine::primitives::Triangle::draw()
+{
+	glDrawArrays(GL_TRIANGLES, 0, 3);
+}
