@@ -27,7 +27,7 @@ target_link_libraries("CGLSL" PUBLIC "IO" "pcre2-8")
 target_compile_features("CGLSL" PUBLIC "cxx_std_20")
 target_include_directories("CGLSL" PUBLIC "inc")
 
-add_library("Engine" "src/Engine/Shader.cpp" inc/Engine/Shader.hpp)
+add_library("Engine" "src/Engine/Shader.cpp" inc/Engine/Shader.hpp inc/Engine/Window.hpp inc/Engine/internal/graphics.hpp src/Engine/Window.cpp)
 target_link_libraries(
 	"Engine"
 	PUBLIC "CGLSL"
