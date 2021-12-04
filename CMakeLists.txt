@@ -7,5 +7,7 @@ project(
     HOMEPAGE_URL "https://github.com/Phytolizer/Phyto2DEngine"
 )
 
+add_subdirectory("3rd/glad")
+
 add_executable("Phyto2DEngine" "main.cpp")
 target_compile_features("Phyto2DEngine" PRIVATE "cxx_std_20")
