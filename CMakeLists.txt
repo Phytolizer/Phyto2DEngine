@@ -27,7 +27,18 @@ target_link_libraries("CGLSL" PUBLIC "IO" "pcre2-8")
 target_compile_features("CGLSL" PUBLIC "cxx_std_20")
 target_include_directories("CGLSL" PUBLIC "inc")
 
-add_library("Engine" "src/Engine/Shader.cpp" inc/Engine/Shader.hpp inc/Engine/Window.hpp inc/Engine/internal/graphics.hpp src/Engine/Window.cpp)
+add_library(
+	"Engine"
+	"inc/Engine/internal/graphics.hpp"
+	"inc/Engine/Primitives/Triangle.hpp"
+	"inc/Engine/Shader.hpp"
+	"inc/Engine/VertexBuffer.hpp"
+	"inc/Engine/Window.hpp"
+	"src/Engine/Primitives/Triangle.cpp"
+	"src/Engine/Shader.cpp"
+	"src/Engine/VertexBuffer.cpp"
+	"src/Engine/Window.cpp"
+)
 target_link_libraries(
 	"Engine"
 	PUBLIC "CGLSL"
