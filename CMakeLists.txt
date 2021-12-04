@@ -8,6 +8,7 @@ project(
 )
 
 add_subdirectory("3rd/glad")
+add_subdirectory("3rd/stb")
 
 add_executable("Phyto2DEngine" "main.cpp")
 target_link_libraries("Phyto2DEngine" PRIVATE "glad")
