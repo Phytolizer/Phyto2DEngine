@@ -96,3 +96,7 @@ phyto::engine::Shader& phyto::engine::Shader::operator=(phyto::engine::Shader&& 
 	}
 	return *this;
 }
+void phyto::engine::Shader::bind() const
+{
+	glUseProgram(m_id);
+}

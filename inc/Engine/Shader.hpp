@@ -20,5 +20,6 @@ class Shader
 	Shader& operator=(Shader&& other) noexcept;
 
 	static Shader fromFile(std::string_view path);
+	void bind() const;
 };
 } // namespace phyto::engine

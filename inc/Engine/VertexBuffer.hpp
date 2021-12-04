@@ -18,6 +18,6 @@ class VertexBuffer
 	VertexBuffer& operator=(VertexBuffer&& other) noexcept;
 
 	void bind() const;
-	void loadData(const GLfloat* pointer, size_t length, GLenum usage) const;
+	void loadData(size_t length, const GLfloat* pointer, GLenum usage) const;
 };
 } // namespace phyto::engine

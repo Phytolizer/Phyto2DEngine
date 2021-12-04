@@ -33,7 +33,7 @@ phyto::engine::VertexBuffer& phyto::engine::VertexBuffer::operator=(phyto::engin
 	}
 	return *this;
 }
-void phyto::engine::VertexBuffer::loadData(const GLfloat* pointer, size_t length, GLenum usage) const
+void phyto::engine::VertexBuffer::loadData(size_t length, const GLfloat* pointer, GLenum usage) const
 {
 	bind();
 	glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(length), pointer, usage);

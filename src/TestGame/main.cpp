@@ -1,3 +1,4 @@
+#include <Engine/Primitives/Triangle.hpp>
 #include <Engine/Shader.hpp>
 #include <Engine/Window.hpp>
 
@@ -5,5 +6,10 @@ int main()
 {
 	auto window = phyto::engine::Window{"Test window", 800, 600};
 	auto s = phyto::engine::Shader::fromFile("res/shaders/default.cglsl");
+	phyto::engine::primitives::Triangle t{std::array{
+	    glm::vec3{-0.5f, -0.5f, 0.0f},
+	    glm::vec3{0.5f, -0.5f, 0.0f},
+	    glm::vec3{0.0f, 0.5f, 0.0f},
+	}};
 	return 0;
 }
