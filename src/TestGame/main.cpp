@@ -18,6 +18,8 @@ int main()
 	while (!window.shouldClose())
 	{
 		glfwPollEvents();
+		glClearColor(0, 1, 1, 1);
+		glClear(GL_COLOR_BUFFER_BIT);
 		s.bind();
 		vao.bind();
 		t.draw();
