@@ -18,10 +18,16 @@ FetchContent_MakeAvailable("glfw")
 add_subdirectory("3rd/glad")
 add_subdirectory("3rd/stb")
 
+add_library("CGLSL" "src/CGLSL/Parser.cpp")
+target_link_libraries("CGLSL" PUBLIC "pcre2-8")
+target_compile_features("CGLSL" PUBLIC "cxx_std_20")
+target_include_directories("CGLSL" PUBLIC "inc")
+
 add_library("Engine" "src/Engine/Shader.cpp" inc/Engine/Shader.hpp)
 target_link_libraries(
 	"Engine"
-	PUBLIC "glad"
+	PUBLIC "CGLSL"
+		   "glad"
 		   "glfw"
 		   "stb"
 )
