@@ -8,4 +8,4 @@ class Shader
 {
 	GLuint m_id;
 };
-}// namespace phyto::engine
+} // namespace phyto::engine
