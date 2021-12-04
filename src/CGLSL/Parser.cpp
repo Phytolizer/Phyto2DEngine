@@ -21,7 +21,7 @@ cglsl::ShaderSource cglsl::Parser::parse(std::string_view shaderPath)
 	{
 		int errorCode;
 		size_t errorOffset;
-		typePatternCode = pcre2_compile((PCRE2_SPTR)(R"(^#type\s+(\w+)$)"), PCRE2_ZERO_TERMINATED, 0, &errorCode,
+		typePatternCode = pcre2_compile((PCRE2_SPTR)(R"(^#type\s+(\w+)$)"), PCRE2_ZERO_TERMINATED, PCRE2_MULTILINE, &errorCode,
 		                                &errorOffset, nullptr);
 		if (typePatternCode == nullptr)
 		{
@@ -38,6 +38,7 @@ cglsl::ShaderSource cglsl::Parser::parse(std::string_view shaderPath)
 	pcre2_match_data* matchData = pcre2_match_data_create_from_pattern(typePatternCode, nullptr);
 	size_t offset = 0;
 	ShaderSource result;
+	result.originatingFile = shaderPath;
 
 	while (true)
 	{

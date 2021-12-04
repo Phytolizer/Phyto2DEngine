@@ -38,6 +38,14 @@ target_link_libraries(
 target_include_directories("Engine" PUBLIC "inc")
 target_compile_features("Engine" PUBLIC "cxx_std_20")
 
+add_custom_target(
+	"copy_assets"
+	DEPENDS "${PROJECT_SOURCE_DIR}/res"
+	COMMAND "${CMAKE_COMMAND}" -E copy_directory "${PROJECT_SOURCE_DIR}/res"
+			"${CMAKE_CURRENT_BINARY_DIR}/res"
+)
+
 add_executable("TestGame" "src/TestGame/main.cpp")
 target_link_libraries("TestGame" PRIVATE "Engine")
 target_compile_features("TestGame" PRIVATE "cxx_std_20")
+add_dependencies("TestGame" "copy_assets")

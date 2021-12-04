@@ -1,7 +1,7 @@
-#include <iostream>
+#include <Engine/Shader.hpp>
 
 int main()
 {
-	std::cout << "Hello, World!" << std::endl;
+	auto s = phyto::engine::Shader::fromFile("res/shaders/default.cglsl");
 	return 0;
 }
