@@ -1,5 +1,6 @@
 #pragma once
 
+#include <span>
 #include "Engine/internal/graphics.hpp"
 
 namespace phyto::engine
@@ -19,5 +20,6 @@ class VertexBuffer
 
 	void bind() const;
 	void loadData(size_t length, const GLfloat* pointer, GLenum usage) const;
+	void loadData(std::span<GLfloat> data, GLenum usage) const;
 };
 } // namespace phyto::engine

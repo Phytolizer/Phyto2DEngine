@@ -44,3 +44,8 @@ void phyto::engine::IndexBuffer::loadData(size_t length, const GLfloat* pointer,
 	bind();
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, static_cast<GLsizeiptr>(length), pointer, usage);
 }
+
+void phyto::engine::IndexBuffer::loadData(std::span<GLfloat> data, GLenum usage) const
+{
+	loadData(data.size_bytes(), data.data(), usage);
+}

@@ -1,9 +1,8 @@
 #include "Engine/Primitives/Triangle.hpp"
-#include <glm/gtc/type_ptr.hpp>
 
 void phyto::engine::primitives::Triangle::loadBuffer()
 {
-	m_vb.loadData(m_vertices.size() * sizeof(float), m_vertices.data(), GL_STATIC_DRAW);
+	m_vb.loadData(m_vertices, GL_STATIC_DRAW);
 }
 
 phyto::engine::primitives::Triangle::Triangle(std::array<glm::vec3, 3> vertices) : m_vertices{0.0f}, m_vb{}, m_attr{-1}

@@ -43,3 +43,8 @@ void phyto::engine::VertexBuffer::bind() const
 {
 	glBindBuffer(GL_ARRAY_BUFFER, m_id);
 }
+
+void phyto::engine::VertexBuffer::loadData(std::span<GLfloat> data, GLenum usage) const
+{
+	loadData(data.size_bytes(), data.data(), usage);
+}
