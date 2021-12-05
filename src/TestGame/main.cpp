@@ -18,18 +18,10 @@ int main()
 	//	t.setAttribute(0);
 
 	phyto::engine::primitives::Quad q{std::array{
-	    0.5f,
-	    0.5f,
-	    0.0f,
-	    0.5f,
-	    -0.5f,
-	    0.0f,
-	    -0.5f,
-	    -0.5f,
-	    0.0f,
-	    -0.5f,
-	    0.5f,
-	    0.0f,
+	    glm::vec3{0.5f, 0.5f, 0.0f},
+	    glm::vec3{0.5f, -0.5f, 0.0f},
+	    glm::vec3{-0.5f, -0.5f, 0.0f},
+	    glm::vec3{-0.5f, 0.5f, 0.0f},
 	}};
 	q.setAttribute(0);
 
