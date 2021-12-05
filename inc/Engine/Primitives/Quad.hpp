@@ -20,7 +20,7 @@ class Quad
   public:
 	explicit Quad(std::array<glm::vec3, 4> points);
 	explicit Quad(std::array<GLfloat, 12> points);
-	void setAttribute(GLint attr);
+	void setPositionAttribute(GLint attr);
 	void bind() const;
 	void draw();
 };

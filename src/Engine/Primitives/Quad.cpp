@@ -29,7 +29,7 @@ void phyto::engine::primitives::Quad::load(std::array<GLfloat, 12> points)
 	m_indices.loadData(indices, GL_STATIC_DRAW);
 }
 
-void phyto::engine::primitives::Quad::setAttribute(GLint attr)
+void phyto::engine::primitives::Quad::setPositionAttribute(GLint attr)
 {
 	glVertexAttribPointer(attr, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 	glEnableVertexAttribArray(attr);

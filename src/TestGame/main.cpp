@@ -15,7 +15,7 @@ int main()
 	//	    glm::vec3{0.5f, -0.5f, 0.0f},
 	//	    glm::vec3{0.0f, 0.5f, 0.0f},
 	//	}};
-	//	t.setAttribute(0);
+	//	t.setPositionAttribute(0);
 
 	phyto::engine::primitives::Quad q{std::array{
 	    glm::vec3{0.5f, 0.5f, 0.0f},
@@ -23,7 +23,7 @@ int main()
 	    glm::vec3{-0.5f, -0.5f, 0.0f},
 	    glm::vec3{-0.5f, 0.5f, 0.0f},
 	}};
-	q.setAttribute(0);
+	q.setPositionAttribute(0);
 
 	while (!window.shouldClose())
 	{
