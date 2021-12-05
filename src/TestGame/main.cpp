@@ -1,3 +1,4 @@
+#include "Engine/Primitives/Quad.hpp"
 #include <Engine/Primitives/Triangle.hpp>
 #include <Engine/Shader.hpp>
 #include <Engine/VertexArray.hpp>
@@ -9,12 +10,28 @@ int main()
 	auto s = phyto::engine::Shader::fromFile("res/shaders/default.cglsl");
 	phyto::engine::VertexArray vao;
 	vao.bind();
-	phyto::engine::primitives::Triangle t{std::array{
-	    glm::vec3{-0.5f, -0.5f, 0.0f},
-	    glm::vec3{0.5f, -0.5f, 0.0f},
-	    glm::vec3{0.0f, 0.5f, 0.0f},
+	//	phyto::engine::primitives::Triangle t{std::array{
+	//	    glm::vec3{-0.5f, -0.5f, 0.0f},
+	//	    glm::vec3{0.5f, -0.5f, 0.0f},
+	//	    glm::vec3{0.0f, 0.5f, 0.0f},
+	//	}};
+	//	t.setAttribute(0);
+
+	phyto::engine::primitives::Quad q{std::array{
+	    0.5f,
+	    0.5f,
+	    0.0f,
+	    0.5f,
+	    -0.5f,
+	    0.0f,
+	    -0.5f,
+	    -0.5f,
+	    0.0f,
+	    -0.5f,
+	    0.5f,
+	    0.0f,
 	}};
-	t.setAttribute(0);
+	q.setAttribute(0);
 
 	while (!window.shouldClose())
 	{
@@ -23,8 +40,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 		s.bind();
 		vao.bind();
-		t.bind();
-		t.draw();
+		q.draw();
 		window.swapBuffers();
 	}
 	return 0;
