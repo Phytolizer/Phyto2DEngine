@@ -25,13 +25,13 @@ phyto::engine::primitives::Quad::Quad(std::array<GLfloat, 12> points) : m_vertic
 void phyto::engine::primitives::Quad::load(std::array<GLfloat, 12> points)
 {
 	m_vertices.loadData(points, GL_STATIC_DRAW);
-	std::array<GLuint, 6> indices{0, 1, 2, 1, 2, 3};
+	std::array<GLuint, 6> indices{0, 1, 2, 0, 2, 3};
 	m_indices.loadData(indices, GL_STATIC_DRAW);
 }
 
 void phyto::engine::primitives::Quad::setAttribute(GLint attr)
 {
-	glVertexAttribPointer(attr, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), nullptr);
+	glVertexAttribPointer(attr, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 	glEnableVertexAttribArray(attr);
 	m_attr = attr;
 }

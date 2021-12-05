@@ -6,3 +6,6 @@
 /build*
 # Visual Studio
 /out
+
+# clangd
+/.cache
