@@ -29,16 +29,18 @@ target_include_directories("CGLSL" PUBLIC "inc")
 
 add_library(
 	"Engine"
+	"inc/Engine/IndexBuffer.hpp"
 	"inc/Engine/internal/graphics.hpp"
 	"inc/Engine/Primitives/Triangle.hpp"
 	"inc/Engine/Shader.hpp"
 	"inc/Engine/VertexArray.hpp"
 	"inc/Engine/VertexBuffer.hpp"
 	"inc/Engine/Window.hpp"
+	"src/Engine/IndexBuffer.cpp"
 	"src/Engine/Primitives/Triangle.cpp"
 	"src/Engine/Shader.cpp"
-	"src/Engine/VertexBuffer.cpp"
 	"src/Engine/VertexArray.cpp"
+	"src/Engine/VertexBuffer.cpp"
 	"src/Engine/Window.cpp"
 )
 target_link_libraries(
