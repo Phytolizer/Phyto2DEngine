@@ -14,7 +14,7 @@ int main()
 	    glm::vec3{0.5f, -0.5f, 0.0f},
 	    glm::vec3{0.0f, 0.5f, 0.0f},
 	}};
-	t.setAttribute(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+	t.setAttribute(0);
 
 	while (!window.shouldClose())
 	{

@@ -23,10 +23,9 @@ phyto::engine::primitives::Triangle::Triangle(std::array<float, 9> vertices) : m
 	loadBuffer();
 }
 
-void phyto::engine::primitives::Triangle::setAttribute(int attr, size_t size, GLenum type, GLenum normalized,
-                                                       size_t stride, size_t offset)
+void phyto::engine::primitives::Triangle::setAttribute(int attr)
 {
-	glVertexAttribPointer(attr, (GLint)size, type, normalized, (GLsizei)stride, (void*)offset);
+	glVertexAttribPointer(attr, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
 	glEnableVertexAttribArray(attr);
 	m_attr = attr;
 }

@@ -19,7 +19,7 @@ class Triangle
   public:
 	explicit Triangle(std::array<glm::vec3, 3> vertices);
 	explicit Triangle(std::array<float, 9> vertices);
-	void setAttribute(int attr, size_t size, GLenum type, GLenum normalized, size_t stride, size_t offset);
+	void setAttribute(int attr);
 	void bind() const;
 	void draw();
 };
