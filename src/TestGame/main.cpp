@@ -14,6 +14,7 @@ int main()
 	    glm::vec3{0.5f, -0.5f, 0.0f},
 	    glm::vec3{0.0f, 0.5f, 0.0f},
 	}};
+	t.setAttribute(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 
 	while (!window.shouldClose())
 	{
@@ -22,6 +23,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 		s.bind();
 		vao.bind();
+		t.bind();
 		t.draw();
 		window.swapBuffers();
 	}
