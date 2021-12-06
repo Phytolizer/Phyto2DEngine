@@ -1,5 +1,4 @@
 #include "CGLSL/Parser.hpp"
-#include "CGLSL/internal/PCRE.hpp"
 #include <IO/IO.hpp>
 #include <array>
 #include <sstream>
@@ -16,34 +15,16 @@ cglsl::ShaderSource cglsl::Parser::parse(std::string_view shaderPath)
 {
 	std::string shaderSource = io::readEntireFile(shaderPath);
 
-	static pcre2_code* typePatternCode = nullptr;
-	if (typePatternCode == nullptr)
-	{
-		int errorCode;
-		size_t errorOffset;
-		typePatternCode = pcre2_compile((PCRE2_SPTR)(R"(^#type\s+(\w+)$)"), PCRE2_ZERO_TERMINATED, PCRE2_MULTILINE, &errorCode,
-		                                &errorOffset, nullptr);
-		if (typePatternCode == nullptr)
-		{
-			std::ostringstream message;
-			std::array<PCRE2_UCHAR8, 256> pcreMessage{'\0'};
-			pcre2_get_error_message(errorCode, pcreMessage.data(), pcreMessage.size());
-			message << "[FATAL] PCRE2 regex compilation failed when it really shouldn't with the following message: "
-			        << pcreMessage.data();
-			throw std::runtime_error{message.str()};
-		}
-	}
-
 	auto prevType = ShaderType::NONE;
-	pcre2_match_data* matchData = pcre2_match_data_create_from_pattern(typePatternCode, nullptr);
+	pcre2_match_data* matchData = pcre2_match_data_create_from_pattern(m_typePatternCode, nullptr);
 	size_t offset = 0;
 	ShaderSource result;
 	result.originatingFile = shaderPath;
 
 	while (true)
 	{
-		int matchResult = pcre2_match(typePatternCode, (PCRE2_SPTR)shaderSource.c_str(), shaderSource.size(), offset, 0,
-		                              matchData, nullptr);
+		int matchResult = pcre2_match(m_typePatternCode, (PCRE2_SPTR)shaderSource.c_str(), shaderSource.size(), offset,
+		                              0, matchData, nullptr);
 		if (matchResult == PCRE2_ERROR_NOMATCH)
 		{
 			break;
@@ -100,5 +81,47 @@ cglsl::ShaderSource cglsl::Parser::parse(std::string_view shaderPath)
 		break;
 	}
 
+	pcre2_match_data_free(matchData);
 	return result;
+}
+cglsl::Parser::Parser()
+{
+	int errorCode;
+	size_t errorOffset;
+	m_typePatternCode = pcre2_compile((PCRE2_SPTR)(R"(^#type\s+(\w+)$)"), PCRE2_ZERO_TERMINATED, PCRE2_MULTILINE,
+	                                  &errorCode, &errorOffset, nullptr);
+	if (m_typePatternCode == nullptr)
+	{
+		std::ostringstream message;
+		std::array<PCRE2_UCHAR8, 256> pcreMessage{'\0'};
+		pcre2_get_error_message(errorCode, pcreMessage.data(), pcreMessage.size());
+		message << "[FATAL] PCRE2 regex compilation failed when it really shouldn't with the following message: "
+		        << pcreMessage.data();
+		throw std::runtime_error{message.str()};
+	}
+}
+cglsl::Parser::~Parser()
+{
+	cleanup();
+}
+void cglsl::Parser::cleanup() const
+{
+	if (m_typePatternCode != nullptr)
+	{
+		pcre2_code_free(m_typePatternCode);
+	}
+}
+cglsl::Parser::Parser(cglsl::Parser&& other) noexcept : m_typePatternCode{other.m_typePatternCode}
+{
+	other.m_typePatternCode = nullptr;
+}
+cglsl::Parser& cglsl::Parser::operator=(cglsl::Parser&& other) noexcept
+{
+	if (&other != this)
+	{
+		cleanup();
+		m_typePatternCode = other.m_typePatternCode;
+		other.m_typePatternCode = nullptr;
+	}
+	return *this;
 }
