@@ -1,7 +1,7 @@
 #pragma once
 
+#include "Engine/Internal/graphics.hpp"
 #include <span>
-#include "Engine/internal/graphics.hpp"
 
 namespace phyto::engine
 {

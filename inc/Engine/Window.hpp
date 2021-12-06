@@ -1,6 +1,6 @@
 #pragma once
 
-#include "internal/graphics.hpp"
+#include "Engine/Internal/graphics.hpp"
 #include <string>
 
 namespace phyto::engine

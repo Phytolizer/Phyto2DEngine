@@ -1,7 +1,7 @@
 #pragma once
 
+#include "Engine/Internal/graphics.hpp"
 #include "Engine/VertexBuffer.hpp"
-#include "Engine/internal/graphics.hpp"
 #include <array>
 #include <glm/vec3.hpp>
 
