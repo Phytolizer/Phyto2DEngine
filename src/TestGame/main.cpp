@@ -5,6 +5,8 @@
 #include <Engine/Window.hpp>
 #include <cmath>
 
+namespace prim = phyto::engine::primitives;
+
 int main()
 {
 	auto window = phyto::engine::Window{"Test window", 800, 600};
@@ -18,21 +20,20 @@ int main()
 	//	}};
 	//	t.setPositionAttribute(0);
 
-	phyto::engine::primitives::Quad q{std::array{
-	    glm::vec3{0.5f, 0.5f, 0.0f},
-	    glm::vec3{0.5f, -0.5f, 0.0f},
-	    glm::vec3{-0.5f, -0.5f, 0.0f},
-	    glm::vec3{-0.5f, 0.5f, 0.0f},
+	prim::Quad q{std::array{
+	    prim::ColoredPoint{glm::vec3{0.5f, 0.5f, 0.0f}, glm::vec4{1.0f, 0.0f, 0.0f, 1.0f}},
+	    prim::ColoredPoint{glm::vec3{0.5f, -0.5f, 0.0f}, glm::vec4{1.0f, 1.0f, 0.0f, 1.0f}},
+	    prim::ColoredPoint{glm::vec3{-0.5f, -0.5f, 0.0f}, glm::vec4{0.0f, 1.0f, 0.0f, 1.0f}},
+	    prim::ColoredPoint{glm::vec3{-0.5f, 0.5f, 0.0f}, glm::vec4{0.0f, 0.0f, 1.0f, 1.0f}},
 	}};
 	q.setPositionAttribute(0);
+	q.setColorAttribute(1);
 
 	while (!window.shouldClose())
 	{
 		glfwPollEvents();
 		glClearColor(0, 1, 1, 1);
 		glClear(GL_COLOR_BUFFER_BIT);
-		float greenValue = sinf((float)glfwGetTime()) / 2.0f + 0.5f;
-		s.uploadUniform("uColor", {0.0f, greenValue, 0.0f, 1.0f});
 		s.bind();
 		vao.bind();
 		q.draw();

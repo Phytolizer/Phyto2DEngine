@@ -2,6 +2,7 @@
 
 #include "Engine/IndexBuffer.hpp"
 #include "Engine/Internal/graphics.hpp"
+#include "Engine/Primitives/ColoredPoint.hpp"
 #include "Engine/VertexBuffer.hpp"
 #include <array>
 #include <glm/vec3.hpp>
@@ -13,14 +14,16 @@ class Quad
 	VertexBuffer m_vertices;
 	// 2 triangles
 	IndexBuffer m_indices;
-	GLint m_attr;
+	GLint m_positionAttr;
+	GLint m_colorAttr;
 
-	void load(std::array<GLfloat, 12> points);
+	void load(std::array<GLfloat, 28> points);
 
   public:
-	explicit Quad(std::array<glm::vec3, 4> points);
-	explicit Quad(std::array<GLfloat, 12> points);
+	explicit Quad(std::array<ColoredPoint, 4> points);
+	explicit Quad(std::array<GLfloat, 28> points);
 	void setPositionAttribute(GLint attr);
+	void setColorAttribute(GLint attr);
 	void bind() const;
 	void draw();
 };

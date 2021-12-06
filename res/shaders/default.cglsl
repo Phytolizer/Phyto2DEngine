@@ -2,7 +2,7 @@
 #version 330 core
 
 layout(location = 0) in vec3 attrPosition;
-layout(location = 0) in vec4 attrColor;
+layout(location = 1) in vec4 attrColor;
 
 out vec4 fragColor;
 
@@ -17,11 +17,9 @@ void main()
 
 in vec4 fragColor;
 
-uniform vec4 uColor;
-
 out vec4 color;
 
 void main()
 {
-    color = uColor;
+    color = fragColor;
 }
