@@ -1,5 +1,6 @@
 #include "Engine/Shader.hpp"
 #include "CGLSL/Parser.hpp"
+#include <glm/gtc/type_ptr.hpp>
 #include <sstream>
 #include <vector>
 
@@ -99,4 +100,10 @@ phyto::engine::Shader& phyto::engine::Shader::operator=(phyto::engine::Shader&& 
 void phyto::engine::Shader::bind() const
 {
 	glUseProgram(m_id);
+}
+void phyto::engine::Shader::uploadUniform(const std::string& name, const glm::vec4& uniform) const
+{
+	int location = glGetUniformLocation(m_id, name.c_str());
+	bind();
+	glUniform4fv(location, 1, glm::value_ptr(uniform));
 }

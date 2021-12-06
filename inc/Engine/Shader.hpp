@@ -1,6 +1,7 @@
 #pragma once
 
-#include <glad/glad.h>
+#include "Engine/Internal/graphics.hpp"
+#include <glm/vec4.hpp>
 #include <string_view>
 
 namespace phyto::engine
@@ -21,5 +22,6 @@ class Shader
 
 	static Shader fromFile(std::string_view path);
 	void bind() const;
+	void uploadUniform(const std::string& name, const glm::vec4& value) const;
 };
 } // namespace phyto::engine

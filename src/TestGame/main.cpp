@@ -3,6 +3,7 @@
 #include <Engine/Shader.hpp>
 #include <Engine/VertexArray.hpp>
 #include <Engine/Window.hpp>
+#include <cmath>
 
 int main()
 {
@@ -30,6 +31,8 @@ int main()
 		glfwPollEvents();
 		glClearColor(0, 1, 1, 1);
 		glClear(GL_COLOR_BUFFER_BIT);
+		float greenValue = sinf((float)glfwGetTime()) / 2.0f + 0.5f;
+		s.uploadUniform("uColor", {0.0f, greenValue, 0.0f, 1.0f});
 		s.bind();
 		vao.bind();
 		q.draw();
