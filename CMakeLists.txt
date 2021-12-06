@@ -30,7 +30,7 @@ target_include_directories("CGLSL" PUBLIC "inc")
 add_library(
 	"Engine"
 	"inc/Engine/IndexBuffer.hpp"
-	"inc/Engine/internal/graphics.hpp"
+	"inc/Engine/Internal/graphics.hpp"
 	"inc/Engine/Primitives/Triangle.hpp"
 	"inc/Engine/Primitives/Quad.hpp"
 	"inc/Engine/Primitives/Grid.hpp"
