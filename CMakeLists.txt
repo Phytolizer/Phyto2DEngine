@@ -18,11 +18,17 @@ FetchContent_MakeAvailable("glfw")
 add_subdirectory("3rd/glad")
 add_subdirectory("3rd/stb")
 
-add_library("IO" "src/IO/IO.cpp")
+add_library("IO" "inc/IO/IO.hpp" "src/IO/IO.cpp")
 target_compile_features("IO" PUBLIC "cxx_std_20")
 target_include_directories("IO" PUBLIC "inc")
 
-add_library("CGLSL" "src/CGLSL/Parser.cpp")
+add_library(
+	"CGLSL"
+	"inc/CGLSL/Internal/PCRE.hpp"
+	"inc/CGLSL/Parser.hpp"
+	"inc/CGLSL/ShaderSource.hpp"
+	"src/CGLSL/Parser.cpp"
+)
 target_link_libraries("CGLSL" PUBLIC "IO" "pcre2-8")
 target_compile_features("CGLSL" PUBLIC "cxx_std_20")
 target_include_directories("CGLSL" PUBLIC "inc")
@@ -31,17 +37,18 @@ add_library(
 	"Engine"
 	"inc/Engine/IndexBuffer.hpp"
 	"inc/Engine/Internal/graphics.hpp"
-	"inc/Engine/Primitives/Triangle.hpp"
-	"inc/Engine/Primitives/Quad.hpp"
+	"inc/Engine/Primitives/ColoredPoint.hpp"
 	"inc/Engine/Primitives/Grid.hpp"
+	"inc/Engine/Primitives/Quad.hpp"
+	"inc/Engine/Primitives/Triangle.hpp"
 	"inc/Engine/Shader.hpp"
 	"inc/Engine/VertexArray.hpp"
 	"inc/Engine/VertexBuffer.hpp"
 	"inc/Engine/Window.hpp"
 	"src/Engine/IndexBuffer.cpp"
-	"src/Engine/Primitives/Triangle.cpp"
-	"src/Engine/Primitives/Quad.cpp"
 	"src/Engine/Primitives/Grid.cpp"
+	"src/Engine/Primitives/Quad.cpp"
+	"src/Engine/Primitives/Triangle.cpp"
 	"src/Engine/Shader.cpp"
 	"src/Engine/VertexArray.cpp"
 	"src/Engine/VertexBuffer.cpp"
