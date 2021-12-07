@@ -6,7 +6,7 @@ int main()
 	int width;
 	int height;
 	int nChannels;
-	GLubyte* data = stbi_load("res/textures/awesomeFace.png", &width, &height, &nChannels, 0);
+	GLubyte* data = stbi_load("res/images/awesomeface.png", &width, &height, &nChannels, 0);
 	Game game{width, height, data};
 
 	while (!game.shouldClose())
