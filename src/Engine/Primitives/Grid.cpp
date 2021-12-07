@@ -1,5 +1,5 @@
 #include "Engine/Primitives/Grid.hpp"
-#include "Engine/Internal/graphics.hpp"
+#include "Engine/Internal/Graphics.hpp"
 #include <vector>
 
 void phyto::engine::primitives::Grid::uploadPoints()

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Engine/IndexBuffer.hpp"
-#include "Engine/Internal/graphics.hpp"
+#include "Engine/Internal/Graphics.hpp"
 #include "Engine/Primitives/ColoredPoint.hpp"
 #include "Engine/VertexBuffer.hpp"
 #include <array>
