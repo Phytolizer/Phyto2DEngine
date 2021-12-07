@@ -10,7 +10,14 @@ class Texture
 	GLsizei m_width;
 	GLsizei m_height;
 
+	void cleanup() const;
+
   public:
 	Texture(GLsizei width, GLsizei height);
+	~Texture();
+	Texture(const Texture&) = delete;
+	Texture& operator=(const Texture&) = delete;
+	Texture(Texture&& other) noexcept;
+	Texture& operator=(Texture&& other) noexcept;
 };
 } // namespace phyto::engine

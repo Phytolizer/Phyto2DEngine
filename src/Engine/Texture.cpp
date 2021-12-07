@@ -9,3 +9,35 @@ phyto::engine::Texture::Texture(GLsizei width, GLsizei height) : m_width{width},
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
+
+phyto::engine::Texture::~Texture()
+{
+	cleanup();
+}
+
+phyto::engine::Texture::Texture(phyto::engine::Texture&& other) noexcept
+    : m_width{other.m_width}, m_height{other.m_height}, m_id{other.m_id}
+{
+	other.m_id = 0;
+}
+
+phyto::engine::Texture& phyto::engine::Texture::operator=(phyto::engine::Texture&& other) noexcept
+{
+	if (&other != this)
+	{
+		cleanup();
+		m_width = other.m_width;
+		m_height = other.m_height;
+		m_id = other.m_id;
+		other.m_id = 0;
+	}
+	return *this;
+}
+
+void phyto::engine::Texture::cleanup() const
+{
+	if (m_id != 0)
+	{
+		glDeleteTextures(1, &m_id);
+	}
+}
