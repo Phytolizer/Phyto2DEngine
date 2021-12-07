@@ -20,5 +20,8 @@ class Grid
 
   public:
 	Grid(size_t width, size_t height, std::array<glm::vec3, 2> bounds);
+	void setPositionAttribute(int attr);
+	void setColorAttribute(int attr);
+	void draw();
 };
 } // namespace phyto::engine::primitives

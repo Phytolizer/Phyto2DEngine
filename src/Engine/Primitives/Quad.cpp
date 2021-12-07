@@ -34,6 +34,7 @@ void phyto::engine::primitives::Quad::setPositionAttribute(GLint attr)
 void phyto::engine::primitives::Quad::bind() const
 {
 	glEnableVertexAttribArray(m_positionAttr);
+	glEnableVertexAttribArray(m_colorAttr);
 }
 void phyto::engine::primitives::Quad::draw()
 {
