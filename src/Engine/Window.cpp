@@ -1,7 +1,7 @@
 #include "Engine/Window.hpp"
 #include <stdexcept>
 
-phyto::engine::Window::Window(const std::string& title, int width, int height)
+phyto::engine::Window::Window(const std::string& title, int width, int height) : m_width{width}, m_height{height}
 {
 	if (glfwInit() != GLFW_TRUE)
 	{
@@ -32,4 +32,12 @@ bool phyto::engine::Window::shouldClose()
 void phyto::engine::Window::swapBuffers()
 {
 	glfwSwapBuffers(m_handle);
+}
+int phyto::engine::Window::width() const
+{
+	return m_width;
+}
+int phyto::engine::Window::height() const
+{
+	return m_height;
 }

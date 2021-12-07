@@ -73,7 +73,14 @@ add_custom_target(
 			"${CMAKE_CURRENT_BINARY_DIR}/res"
 )
 
-add_executable("TestGame" "src/TestGame/main.cpp")
+add_executable(
+	"TestGame"
+	"src/TestGame/Game.cpp"
+	"src/TestGame/Game.hpp"
+	"src/TestGame/main.cpp"
+	"src/TestGame/SpriteRenderer.cpp"
+	"src/TestGame/SpriteRenderer.hpp"
+)
 target_link_libraries("TestGame" PRIVATE "Engine")
 target_compile_features("TestGame" PRIVATE "cxx_std_20")
 add_dependencies("TestGame" "copy_assets")

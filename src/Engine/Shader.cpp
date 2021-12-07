@@ -103,7 +103,28 @@ void phyto::engine::Shader::bind() const
 }
 void phyto::engine::Shader::uploadUniform(const std::string& name, const glm::vec4& uniform) const
 {
-	int location = glGetUniformLocation(m_id, name.c_str());
 	bind();
+	int location = glGetUniformLocation(m_id, name.c_str());
 	glUniform4fv(location, 1, glm::value_ptr(uniform));
+}
+
+void phyto::engine::Shader::uploadUniform(const std::string& name, const glm::mat4& value) const
+{
+	bind();
+	int location = glGetUniformLocation(m_id, name.c_str());
+	glUniform4fv(location, 4, glm::value_ptr(value));
+}
+
+void phyto::engine::Shader::uploadUniform(const std::string& name, const glm::vec3& value) const
+{
+	bind();
+	int location = glGetUniformLocation(m_id, name.c_str());
+	glUniform3fv(location, 1, glm::value_ptr(value));
+}
+
+void phyto::engine::Shader::uploadUniform(const std::string& name, int value) const
+{
+	bind();
+	int location = glGetUniformLocation(m_id, name.c_str());
+	glUniform1i(location, value);
 }

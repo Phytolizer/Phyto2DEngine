@@ -14,6 +14,7 @@ class Texture
 
   public:
 	Texture(GLsizei width, GLsizei height);
+	Texture(GLsizei width, GLsizei height, const GLubyte* data);
 	~Texture();
 	Texture(const Texture&) = delete;
 	Texture& operator=(const Texture&) = delete;
@@ -21,6 +22,6 @@ class Texture
 	Texture& operator=(Texture&& other) noexcept;
 
 	void bind() const;
-	void setData(const GLubyte* data);
+	void loadData(const GLubyte* data);
 };
 } // namespace phyto::engine
